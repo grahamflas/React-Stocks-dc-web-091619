@@ -45,7 +45,7 @@ class MainContainer extends Component {
     })
   }
 
-  updateSort = val => {
+  updateSortBy = val => {
     this.setState({
       sortBy: val
     })
@@ -55,7 +55,7 @@ class MainContainer extends Component {
     return (
       <div>
         <SearchBar  sortBy={this.state.sortBy}
-                    updateSort={this.updateSort}/>
+                    updateSortBy={this.updateSortBy}/>
 
           <div className="row">
             <div className="col-8">
