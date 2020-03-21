@@ -54,7 +54,7 @@ class MainContainer extends Component {
             </div>
             <div className="col-4">
 
-              <PortfolioContainer/>
+              <PortfolioContainer portfolio={this.state.portfolio}/>
 
             </div>
           </div>
