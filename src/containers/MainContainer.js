@@ -10,7 +10,7 @@ class MainContainer extends Component {
     this.state = {
       stocks: [],
       portfolio: [],
-      sortBy: "Alphabetically"
+      sortBy: "name"
     }
   }
 
@@ -51,7 +51,29 @@ class MainContainer extends Component {
     })
   }
 
+  sortStocks = () => {
+    if (!this.state.stocks.length === 0) return;
+    const stocks = this.state.stocks.slice()
+
+    if (this.state.sortBy === "name"){  
+      stocks.sort((a,b) => {
+        let tickerA = a.ticker;
+        let tickerB = b.ticker;
+
+        if (tickerA < tickerB) return -1;
+        if (tickerA > tickerB) return 1;
+        return 0;
+      })
+    } else if (this.state.sortBy === "price") {
+      return stocks.sort((a,b) => b.price - a.price)
+    }
+
+    return stocks
+  }
+
   render() {
+    let stocksToShow = this.sortStocks()
+    console.log(stocksToShow)
     return (
       <div>
         <SearchBar  sortBy={this.state.sortBy}

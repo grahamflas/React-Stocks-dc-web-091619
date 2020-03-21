@@ -8,15 +8,15 @@ const SearchBar = (props) => {
       <label>
         <input type="radio" 
                 value="Alphabetically" 
-                checked={props.sortBy === "Alphabetically" ? true : false} 
-                onChange={() => props.updateSortBy("Alphabetically")}/>
+                checked={props.sortBy === "name" ? true : false} 
+                onChange={() => props.updateSortBy("name")}/>
         Alphabetically
       </label>
       <label>
         <input  type="radio" 
                 value="Price" 
-                checked={props.sortBy === "Price" ? true : false} 
-                onChange={() => props.updateSortBy("Price")}/>
+                checked={props.sortBy === "price" ? true : false} 
+                onChange={() => props.updateSortBy("price")}/>
         Price
       </label>
       <br/>
