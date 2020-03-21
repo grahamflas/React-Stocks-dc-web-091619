@@ -13,4 +13,5 @@ class App extends Component {
   }
 }
 
+export const BASE_URL = "http://localhost:3000/stocks";
 export default App;
