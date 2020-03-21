@@ -9,7 +9,8 @@ class MainContainer extends Component {
     super()
     this.state = {
       stocks: [],
-      portfolio: []
+      portfolio: [],
+      sortBy: "Alphabetically"
     }
   }
 
@@ -29,7 +30,11 @@ class MainContainer extends Component {
   }
 
   sellStock = stock => {
-    console.log("Selling: ", stock)
+    const copyPortfolio = this.state.portfolio.slice();
+    const newPortfolio = copyPortfolio.filter(el => el !== stock )
+    this.setState({
+      portfolio: newPortfolio
+    })
   }
 
   buyStock = stock => {
@@ -40,10 +45,17 @@ class MainContainer extends Component {
     })
   }
 
+  updateSort = val => {
+    this.setState({
+      sortBy: val
+    })
+  }
+
   render() {
     return (
       <div>
-        <SearchBar/>
+        <SearchBar  sortBy={this.state.sortBy}
+                    updateSort={this.updateSort}/>
 
           <div className="row">
             <div className="col-8">
