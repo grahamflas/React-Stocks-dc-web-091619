@@ -10,7 +10,8 @@ class StockContainer extends Component {
         {
           this.props.stocks.map(stock => 
             <Stock  key={stock.id}
-                    stock={stock}/>
+                    stock={stock}
+                    buySell={this.props.buySell}/>
           )
         }
       </div>
