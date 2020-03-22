@@ -23,7 +23,7 @@ const SearchBar = (props) => {
 
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={event => props.updateFilter(event)}>
           <option value="All">All Stocks</option>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>

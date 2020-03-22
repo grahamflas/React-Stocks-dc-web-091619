@@ -10,7 +10,8 @@ class MainContainer extends Component {
     this.state = {
       stocks: [],
       portfolio: [],
-      sortBy: "name"
+      sortBy: "name", 
+      filter: "All",
     }
   }
 
@@ -51,6 +52,12 @@ class MainContainer extends Component {
     })
   }
 
+  updateFilter = event => {
+    this.setState({
+      filter: event.target.value
+    });
+  }
+
   sortStocks = () => {
     if (!this.state.stocks.length === 0) return;
     const stocks = this.state.stocks.slice()
@@ -71,18 +78,27 @@ class MainContainer extends Component {
     return stocks
   }
 
+  filterStocks = () => {
+    const sortedStocks = this.sortStocks();
+    const filter = this.state.filter
+    if (filter === "All") return sortedStocks;
+
+    return sortedStocks.filter(stock => stock.type === filter)
+  }
+
   render() {
-    let stocksToShow = this.sortStocks()
-    console.log(stocksToShow)
+    let stocksToShow = this.filterStocks()
+    
     return (
       <div>
         <SearchBar  sortBy={this.state.sortBy}
-                    updateSortBy={this.updateSortBy}/>
+                    updateSortBy={this.updateSortBy}
+                    updateFilter={this.updateFilter}/>
 
           <div className="row">
             <div className="col-8">
 
-              <StockContainer stocks={this.state.stocks}
+              <StockContainer stocks={stocksToShow}
                               buySell={this.buySell}/>
 
             </div>
